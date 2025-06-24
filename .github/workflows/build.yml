@@ -1,0 +1,78 @@
+name: Build
+
+concurrency: 
+  group: "build"
+  cancel-in-progress: true
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '*.md'
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          path: "src"
+
+      - name: Checkout builds
+        uses: actions/checkout@master
+        with:
+          ref: "builds"
+          path: "builds"
+
+      - name: Checkout Aliucord
+        uses: actions/checkout@master
+        with:
+          repository: "Aliucord/Aliucord"
+          path: "repo"
+
+      - name: Setup JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+
+      - name: Build Plugins
+        run: |
+          cd $GITHUB_WORKSPACE/src
+          chmod +x gradlew
+          ./gradlew make generateUpdaterJson
+
+      - name: List build outputs
+        run: find $GITHUB_WORKSPACE/src -type f
+
+      - name: Copy plugin zips to builds
+        run: |
+          shopt -s globstar nullglob
+          ZIPFILES=($GITHUB_WORKSPACE/src/**/build/*.zip)
+          if [ ${#ZIPFILES[@]} -eq 0 ]; then
+            echo "No .zip files found in any build directory!"
+            exit 1
+          fi
+          cp "${ZIPFILES[@]}" $GITHUB_WORKSPACE/builds
+
+      - name: Copy updater.json to builds
+        run: |
+          if [ -f $GITHUB_WORKSPACE/src/build/updater.json ]; then
+            cp $GITHUB_WORKSPACE/src/build/updater.json $GITHUB_WORKSPACE/builds
+          else
+            echo "updater.json not found!"
+            exit 1
+          fi
+
+      - name: Push builds
+        run: |
+          cd $GITHUB_WORKSPACE/builds
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add .
+          git commit -m "Build $GITHUB_SHA" || exit 0
+          git push
