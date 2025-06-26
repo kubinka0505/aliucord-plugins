@@ -60,7 +60,7 @@ public class CopyWithMarkdown extends Plugin {
 
                 TextView tv = new TextView(layout.getContext(), null, 0, R.i.UiKit_Settings_Item_Icon);
                 tv.setId(buttonId);
-                tv.setText("Copy with Markdown");
+                tv.setText(Strings.getString("copy_with_markdown"));
                 setupMarkdownCopyButton(tv, message, actions, layout.getContext());
                 ButtonSearchResult btnResult = findCopyTextButton(layout);
                 if (btnResult.index != -1) {
@@ -81,18 +81,20 @@ public class CopyWithMarkdown extends Plugin {
         }
     }
 
-    private ButtonSearchResult findCopyTextButton(LinearLayout layout) {
-        for (int i = 0; i < layout.getChildCount(); i++) {
-            View v = layout.getChildAt(i);
-            if (v instanceof TextView) {
-                CharSequence text = ((TextView) v).getText();
-                if ("Copy Text".contentEquals(text)) {
-                    return new ButtonSearchResult(i, (TextView) v);
-                }
-            }
-        }
-        return new ButtonSearchResult(-1, null);
-    }
+	private ButtonSearchResult findCopyTextButton(LinearLayout layout) {
+	    View v = layout.findViewById(Utils.getResId("dialog_chat_actions_copy", "id"));
+	    if (v instanceof TextView) {
+	        int idx = -1;
+	        for (int i = 0; i < layout.getChildCount(); i++) {
+	            if (layout.getChildAt(i) == v) {
+	                idx = i;
+	                break;
+	            }
+	        }
+	        return new ButtonSearchResult(idx, (TextView) v);
+	    }
+	    return new ButtonSearchResult(-1, null);
+	}
 
     private void setupMarkdownCopyButton(TextView tv, com.discord.models.message.Message message, WidgetChatListActions actions, Context ctx) {
         Drawable copyIcon = ContextCompat.getDrawable(

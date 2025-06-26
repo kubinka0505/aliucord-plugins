@@ -32,8 +32,8 @@ public class CopyWithMarkdownSettings extends SettingsPage {
 
         addCheckedSetting(
             ctx,
-            "Separate buttons",
-            "Create a separate button for copying with markdown",
+            Strings.getString("separate_buttons"),
+            Strings.getString("separate_buttons_desc"),
             "separateButtons"
         );
     }
