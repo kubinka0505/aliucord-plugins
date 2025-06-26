@@ -1,9 +1,12 @@
-version = "1.0.1"
+version = "1.0.2"
 description = "Copy message with markdown! Use 'Separate buttons' setting to use this alongside Discord's default."
 
 aliucord {
 
     changelog.set("""
+        1.0.2
+        - Show toast when tapping the copy buttons
+
         1.0.1
         - Fixed bug where the copy button would not be replaced on non-English devices
         - Added support for 21 different languages, including Spanish, Polish, Turkish and Hindi.
