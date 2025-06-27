@@ -1,7 +1,8 @@
 rootProject.name = "AliucordPlugins"
 
 include(
-    "CopyWithMarkdown"
+    "CopyWithMarkdown",
+    "CopyFileLink"
 )
 
 rootProject.children.forEach {
