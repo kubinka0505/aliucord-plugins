@@ -6,4 +6,4 @@ Makes Discord's 'Copy Text' function copy with markdown (similarly to the newer,
 Enable "Separate buttons" in settings to keep Discord's default 'Copy Text' alongside a button for this plugin
 
 ### [CopyFileLink](https://github.com/Halkiion/aliucord-plugins/raw/refs/heads/builds/CopyFileLink.zip)
-Tap and hold file attachment (such as .apk, .txt and .apk files) in chat to copy their links!
+Tap and hold file attachment (such as .mp3, .txt and .apk files) in chat to copy their links!
