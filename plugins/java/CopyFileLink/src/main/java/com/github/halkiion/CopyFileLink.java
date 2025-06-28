@@ -45,12 +45,16 @@ public class CopyFileLink extends Plugin {
                     final String url = proxyUrl.replace("://media.discordapp.net/", "://cdn.discordapp.com/");
                     card.setOnLongClickListener(v -> {
                         Utils.setClipboard("Message", url);
-                        Utils.showToast("Copied: " + url);
+                        showToast(ctx, "File link copied to clipboard!", Toast.LENGTH_SHORT);
                         return true;
                     });
                 }
             })
         );
+    }
+
+    private void showToast(Context ctx, String message, int duration) {
+        b.a.d.m.e(ctx, message, duration, null);
     }
 
     @Override
