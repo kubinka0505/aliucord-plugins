@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 import androidx.core.widget.NestedScrollView;
@@ -120,9 +121,15 @@ public class CopyWithMarkdown extends Plugin {
             String markdown = sb.toString();
 
             Utils.setClipboard("Message", markdown);
-            Utils.showToast(settings.getBool("separateButtons", false) ? "Copied with Markdown." : "Copied to clipboard.");
+            showToast(ctx,
+                settings.getBool("separateButtons", false) ? Strings.getString("copied_with_markdown") : Strings.getString("copied_to_clipboard"),
+                Toast.LENGTH_LONG);
             actions.dismiss();
         });
+    }
+
+    private void showToast(Context ctx, String message, int duration) {
+        b.a.d.m.e(ctx, message, duration, null);
     }
 
     @Override
