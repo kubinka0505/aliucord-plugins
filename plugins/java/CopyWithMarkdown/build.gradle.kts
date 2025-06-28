@@ -1,9 +1,13 @@
-version = "1.0.2"
+version = "1.0.3"
 description = "Copy message with markdown! Use 'Separate buttons' setting to use this alongside Discord's default."
 
 aliucord {
 
     changelog.set("""
+        1.0.3
+        - Added translations for 'Copied to clipboard' and 'Copied with Markdown.'
+        - Added Themer-aware toasts
+
         1.0.2
         - Show toast when tapping the copy buttons
 
