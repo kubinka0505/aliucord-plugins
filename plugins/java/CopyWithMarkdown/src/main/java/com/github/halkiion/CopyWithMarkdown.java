@@ -122,7 +122,7 @@ public class CopyWithMarkdown extends Plugin {
 
             Utils.setClipboard("Message", markdown);
             showToast(ctx,
-                settings.getBool("separateButtons", false) ? Strings.getString("copied_with_markdown") : Strings.getString("copied_to_clipboard"),
+                settings.getBool("separateButtons", false) ? Strings.getString("copied_with_markdown") : ctx.getString(R.h.copied_text),
                 Toast.LENGTH_LONG);
             actions.dismiss();
         });
