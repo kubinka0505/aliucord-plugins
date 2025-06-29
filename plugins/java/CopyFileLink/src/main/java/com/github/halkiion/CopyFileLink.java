@@ -32,17 +32,17 @@ public class CopyFileLink extends Plugin {
                 Context ctx = root.getContext();
 
                 MessageAttachment messageAttachment = (MessageAttachment) callFrame.args[0];
-                String proxyUrl;
+                String fileUrl;
                 try {
-                    var field = messageAttachment.getClass().getDeclaredField("proxyUrl");
+                    var field = messageAttachment.getClass().getDeclaredField("url");
                     field.setAccessible(true);
-                    proxyUrl = (String) field.get(messageAttachment);
+                    fileUrl = (String) field.get(messageAttachment);
                 } catch (Exception e) {
-                    proxyUrl = null;
+                    fileUrl = null;
                 }
 
-                if (proxyUrl != null && card != null) {
-                    final String url = proxyUrl.replace("://media.discordapp.net/", "://cdn.discordapp.com/");
+                if (fileUrl != null && card != null) {
+                    final String url = fileUrl;
                     card.setOnLongClickListener(v -> {
                         Utils.setClipboard("Message", url);
                         showToast(ctx, "File link copied to clipboard!", Toast.LENGTH_SHORT);
