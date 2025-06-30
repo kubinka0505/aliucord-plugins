@@ -4,6 +4,8 @@ import android.content.Context;
 import android.widget.Toast;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.lytefast.flexinput.R;
+
 import com.aliucord.annotations.AliucordPlugin;
 import com.aliucord.entities.Plugin;
 import com.aliucord.patcher.Hook;
@@ -45,7 +47,7 @@ public class CopyFileLink extends Plugin {
                     final String url = fileUrl;
                     card.setOnLongClickListener(v -> {
                         Utils.setClipboard("Message", url);
-                        showToast(ctx, "File link copied to clipboard!", Toast.LENGTH_SHORT);
+                        showToast(ctx, Strings.getString("link_copied", ctx.getString(R.h.copied_link)), Toast.LENGTH_SHORT);
                         return true;
                     });
                 }

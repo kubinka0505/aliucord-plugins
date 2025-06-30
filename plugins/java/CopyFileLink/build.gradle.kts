@@ -1,9 +1,12 @@
-version = "1.0.2"
+version = "1.0.3"
 description = "Tap and hold file attachment (such as .apk, .txt and .apk files) in chat to copy their links!"
 
 aliucord {
 
     changelog.set("""
+        1.0.3
+        - Added translations for 21 different languages, including Spanish, Polish, Turkish and Hindi.
+
         1.0.2
         - Use url field instead of proxyUrl
 
