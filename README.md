@@ -7,3 +7,6 @@ Enable "Separate buttons" in settings to keep Discord's default 'Copy Text' alon
 
 ### [CopyFileLink](https://github.com/Halkiion/aliucord-plugins/raw/refs/heads/builds/CopyFileLink.zip)
 Tap and hold file attachment (such as .mp3, .txt and .apk files) in chat to copy their links!
+
+### [MoreProfile](https://github.com/Halkiion/aliucord-plugins/raw/refs/heads/builds/MoreProfile.zip)
+Adds more account/profile options in the settings menu, such as for changing display name and pronouns
