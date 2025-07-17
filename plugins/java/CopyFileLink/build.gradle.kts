@@ -1,5 +1,5 @@
 version = "1.0.3"
-description = "Tap and hold file attachment (such as .apk, .txt and .apk files) in chat to copy their links!"
+description = "Tap and hold file attachment (such as .mp3, .txt and .apk files) in chat to copy their links!"
 
 aliucord {
 
