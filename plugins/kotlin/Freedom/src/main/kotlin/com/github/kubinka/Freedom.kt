@@ -8,19 +8,13 @@ import com.aliucord.patcher.after
 @AliucordPlugin
 class Freedom : Plugin() {
     private val characters = mapOf(
-        'a' to 'а',
-        'e' to 'е',
-        'o' to 'о',
-        'p' to 'р',
-        'c' to 'с',
-        'y' to 'у',
-        'x' to 'х',
-        'A' to 'А',
-        'E' to 'Е',
-        'O' to 'О',
-        'P' to 'Р',
-        'C' to 'С',
-        'X' to 'Х'
+        'a' to 'ą',
+        'e' to 'ę',
+		'c' to 'ć',
+		'l' to 'ł',
+		'n' to 'ń',
+		's' to 'ś',
+		'z' to 'ź'
     )
 
     private fun replaceCharacters(input: String): String {
