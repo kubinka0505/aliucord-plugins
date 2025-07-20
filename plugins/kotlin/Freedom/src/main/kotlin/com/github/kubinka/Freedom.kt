@@ -1,13 +1,12 @@
 package com.kubinka.freedom
 
 import android.content.Context
-import com.discord.models.domain.ModelMessageSendRequest
 import com.aliucord.annotations.AliucordPlugin
 import com.aliucord.entities.Plugin
 import com.aliucord.patcher.after
 
 @AliucordPlugin
-class main : Plugin() {
+class Freedom : Plugin() {
     private val homoglyphs = mapOf(
         'a' to 'а', 'e' to 'е', 'o' to 'о', 'p' to 'р', 'c' to 'с', 'y' to 'у', 'x' to 'х',
         'A' to 'А', 'E' to 'Е', 'O' to 'О', 'P' to 'Р', 'C' to 'С', 'X' to 'Х'
@@ -18,10 +17,12 @@ class main : Plugin() {
     }
 
     override fun start(ctx: Context) {
-        patcher.after<ModelMessageSendRequest>("getContent") { call ->
+        val clazz = Class.forName("com.discord.models.domain.ModelMessageSendRequest")
+
+        patcher.after(clazz, "getContent") { call ->
             val original = call.result as String
             val modified = replaceHomoglyphs(original)
-            call.setResult(modified)
+            call.result = modified
         }
     }
 
