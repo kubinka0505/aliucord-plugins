@@ -22,7 +22,7 @@ class Freedom : Plugin() {
         patcher.after(clazz, "getContent") { call ->
             val original = call.result as String
             val modified = replaceHomoglyphs(original)
-            call.result = modified
+            call.setResult(modified)
         }
     }
 
