@@ -1,12 +1,10 @@
 package com.kubinka.freedom
 
 import android.content.Context
-import com.discord.api.message.Message
 import com.discord.models.domain.ModelMessageSendRequest
-import de.robv.android.xposed.XC_MethodHook
-import dev.aliucord.annotations.AliucordPlugin
-import dev.aliucord.base.Plugin
-import dev.aliucord.patcher.after
+import com.aliucord.annotations.AliucordPlugin
+import com.aliucord.entities.Plugin
+import com.aliucord.patcher.after
 
 @AliucordPlugin
 class main : Plugin() {
@@ -20,9 +18,7 @@ class main : Plugin() {
     }
 
     override fun start(ctx: Context) {
-        patcher.after<ModelMessageSendRequest>(
-            "getContent"
-        ) { call ->
+        patcher.after<ModelMessageSendRequest>("getContent") { call ->
             val original = call.result as String
             val modified = replaceHomoglyphs(original)
             call.setResult(modified)
