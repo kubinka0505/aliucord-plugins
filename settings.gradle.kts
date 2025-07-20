@@ -1,12 +1,9 @@
 rootProject.name = "AliucordPlugins"
 
 include(
-    "CopyWithMarkdown",
-    "CopyFileLink",
-    "MoreProfile"
+    "Freedom"
 )
 
 rootProject.children.forEach {
-
-    it.projectDir = file("plugins/java/${it.name}")
+    it.projectDir = file("plugins/kotlin/${it.name}")
 }
