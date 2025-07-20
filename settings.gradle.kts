@@ -5,5 +5,5 @@ include(
 )
 
 rootProject.children.forEach {
-    it.projectDir = file("plugins/kotlin/${it.name}")
+    it.projectDir = file("plugins/java/${it.name}")
 }
