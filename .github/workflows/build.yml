@@ -64,7 +64,7 @@ jobs:
           if [ -f $GITHUB_WORKSPACE/src/build/updater.json ]; then
             cp $GITHUB_WORKSPACE/src/build/updater.json $GITHUB_WORKSPACE/builds
           else
-            echo "updater.json not found!"
+            echo "Updater.json not found!"
             exit 1
           fi
 
