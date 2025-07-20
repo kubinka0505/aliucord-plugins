@@ -1,12 +1,12 @@
-package dev.kubinka0505.freedom
+package com.kubinka.freedom
 
 import android.content.Context
 import com.discord.api.message.Message
 import com.discord.models.domain.ModelMessageSendRequest
 import de.robv.android.xposed.XC_MethodHook
-import dev.alucord.annotations.AliucordPlugin
-import dev.alucord.base.Plugin
-import dev.alucord.patcher.after
+import dev.aliucord.annotations.AliucordPlugin
+import dev.aliucord.base.Plugin
+import dev.aliucord.patcher.after
 
 @AliucordPlugin
 class main : Plugin() {
