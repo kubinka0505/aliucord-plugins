@@ -19,7 +19,7 @@ class Freedom : Plugin() {
     override fun start(ctx: Context) {
         val clazz = Class.forName("com.discord.models.domain.ModelMessageSendRequest")
 
-        patcher.after(clazz, "getContent") { call ->
+        patcher.after(clazz, "getContent", *arrayOf()) { call ->
             val original = call.result as String
             val modified = replaceHomoglyphs(original)
             call.setResult(modified)
